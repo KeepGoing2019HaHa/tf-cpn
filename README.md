@@ -1,7 +1,8 @@
 ## modify
 ### 1. elementwise add(global net) --> concat and 3\*3 conv to reduce channels
 ### 2. add regression head on refine net, predict offset of center
-for modify point 2, every (y,x) in reg_x stands for: if we predict (y,x) as the final prediction position on heatmap, then the corrsponding position on original image is (4\*y+reg_y[y,x]+4\*x+reg_x[y,x])
+for modify point 2, every (y,x) in reg_x,reg_y stands for: if we predict (y,x) as the final prediction position on heatmap, then the corrsponding position on original image is (4\*y+reg_y[y,x]+4\*x+reg_x[y,x])
+mainly modify in COCO.res50.256x192.CPN fold
 
 
 
