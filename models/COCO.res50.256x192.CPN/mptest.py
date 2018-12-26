@@ -121,8 +121,8 @@ def test_net(tester, logger, dets, det_range):
                 border = 10
                 dr = np.zeros((cfg.nr_skeleton, cfg.output_shape[0] + 2 * border, cfg.output_shape[1] + 2 * border))
                 dr[:, border:-border, border:-border] = res[test_image_id - start_id][:cfg.nr_skeleton].copy()
-                for w in range(cfg.nr_skeleton):
-                    dr[w] = cv2.GaussianBlur(dr[w], (21, 21), 0)
+                # for w in range(cfg.nr_skeleton):
+                #     dr[w] = cv2.GaussianBlur(dr[w], (21, 21), 0)
                 for w in range(cfg.nr_skeleton):
                     lb = dr[w].argmax()
                     y, x = np.unravel_index(lb, dr[w].shape)
@@ -134,7 +134,7 @@ def test_net(tester, logger, dets, det_range):
                     py -= border + y
                     px -= border + x
                     ln = (px ** 2 + py ** 2) ** 0.5
-                    delta = 0.25
+                    delta = 0.25 # 0.5 # 0.25
                     if ln > 1e-3:
                         x += delta * px / ln
                         y += delta * py / ln
@@ -219,7 +219,7 @@ def test(test_model, logger):
         range = [ranges[id], ranges[id + 1]]
         return test_net(tester, logger, dets, range)
 
-    MultiGPUFunc = MultiProc(len(args.gpu_ids.split(',')), func)
+    MultiGPUFunc = MultiProc(len(args.gpu_ids.split(',')), func, dump_method=1)
     all_res, dump_results = MultiGPUFunc.work()
 
     # evaluation

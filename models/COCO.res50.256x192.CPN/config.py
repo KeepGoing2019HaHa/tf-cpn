@@ -4,7 +4,7 @@ import sys
 import numpy as np
 
 class Config:
-    username = 'default'
+    username = 'regress0' # 'default' test
 
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     this_dir_name = cur_dir.split('/')[-1]
@@ -16,11 +16,11 @@ class Config:
     output_dir = os.path.join(root_dir, 'logs', username + '.' + this_dir_name)
     model_dump_dir = osp.join(output_dir, 'model_dump')
 
-    display = 1
+    display = 100
 
-    lr = 5e-4
+    lr = 1.0 # 5e-4
     lr_gamma = 0.5
-    lr_dec_epoch = 60
+    lr_dec_epoch = 2 # 60
 
     epoch_size = 60000 
     optimizer = 'adam'
@@ -29,7 +29,7 @@ class Config:
     weight_decay = 1e-5
 
     step_size = epoch_size * lr_dec_epoch
-    max_itr = epoch_size * 400
+    max_itr = epoch_size * 20
     double_bias = False
 
     dpflow_enable = True
@@ -51,7 +51,8 @@ class Config:
         print('>>> Using /gpu:{}'.format(self.gpu_ids))
 
     bn_train = True
-    init_model = osp.join(root_dir, 'data', 'imagenet_weights', 'res50.ckpt')
+    # init_model = osp.join(root_dir, 'data', 'imagenet_weights', 'res50.ckpt')
+    init_model = '/datanew/yw/cpn/tf-cpn/logs/default2.COCO.res50.256x192.CPN/model_dump/snapshot_300.ckpt'
 
     nr_skeleton = 17
     img_path = os.path.join(root_dir, 'data', 'COCO', 'MSCOCO', 'images')
