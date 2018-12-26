@@ -1,3 +1,6 @@
+## modify
+### 1. elementwise add(global net) --> concat and 3\*3 conv to reduce channels
+
 # Cascaded Pyramid Network (CPN)
 
 This is a Tensorflow re-implementation of CPN ([Cascaded Pyramid Network](https://arxiv.org/abs/1711.07319)), which wins 2017 COCO Keypoints Challenge. The original repo is based on the inner deep learning framework (MegBrain) in Megvii Inc.
