@@ -5,6 +5,15 @@ for modify point 2, every (y,x) in reg_x,reg_y stands for: if we predict (y,x) a
 #### mainly modify in COCO.res50.256x192.CPN fold.
 
 ## one wierd issue: when I was finetuning regress head, use lr=1 get very large loss, but when use lr=1.0 get correct loss.
+## one more trick: regress GT is not smooth, maybe use 1.0/reg_x, but have to handle reg_x==0
+
+
+# Modify Results
+| Method | Base Model | Input Size | AP @0.5:0.95 |
+|:-------|:--------:|:-----:|:-------:|
+| original | ResNet-50 | 256x192 | 69.7 |
+| add->concat(1*\1 channel reduce) | ResNet-50 | 256x192 | 72.3 |
+| CPN | ResNet-50 | 256x192 | 72.9 |
 
 
 ##
