@@ -12,7 +12,7 @@ for modify point 2, every (y,x) in reg_x,reg_y stands for: if we predict (y,x) a
 | Method | Base Model | Input Size | AP @0.5:0.95 |
 |:-------|:--------:|:-----:|:-------:|
 | original | ResNet-50 | 256x192 | 69.9 |
-| add->concat(1\*1 channel reduce) | ResNet-50 | 256x192 | 69.7 |
+| add->concat(1\*1 channel reduce) | ResNet-50 | 256x192 | **69.7** |
 | add->concat(3\*3 channel reduce) | ResNet-50 | 256x192 | **70.1** |
 | add->concat(no extra reduce) | ResNet-50 | 256x192 | 69.8 |
 | add regress head(9\*9) | ResNet-50 | 256x192 | 69.9 |
